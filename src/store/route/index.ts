@@ -137,12 +137,9 @@ export class RouteStore {
   }
 
   public removeStop = (stop: UnfinishedRouteStop) => {
-    const index = this.state.stops.indexOf(stop)
-
-    this.state.stops = [
-      ...this.state.stops.slice(0, index),
-      ...this.state.stops.slice(index + 1),
-    ]
+    this.state.stops = this.state.stops.filter((existingStop) => {
+      return existingStop.Order__c !== stop.Order__c
+    })
 
     directions.clear()
   }
@@ -177,8 +174,6 @@ export class RouteStore {
     } else {
       this.addOrderToExistingStop(order, existingIndex)
     }
-
-    console.log(this.state.stops)
   }
 
   private createNewStopWithOrder = (order: Order) => {
@@ -212,7 +207,7 @@ export class RouteStore {
   // like an account id if we make the relationship in SF strict.
   private findIndexWithIdenticalAddress = (order: Order) => {
     return this.state.stops.findIndex((stop) => {
-      return stop.Order__r.ShippingStreet.toLowerCase() === order.ShippingStreet.toLowerCase()
+      return stop.Order__r.ShippingStreet.toLowerCase() === order.ShippingStreet.toLowerCase() && stop.Order__r.ShippingState.toLowerCase() === order.ShippingState.toLowerCase()
     })
   }
 
