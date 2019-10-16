@@ -106,6 +106,10 @@ export class OrdersStore {
     }, [this.defaultZoneFilter])
   }
 
+  get dateFilterISO () {
+    return this.state.dateFilter.minus({ days: 1 }).toISO()
+  }
+
 }
 
 export default new OrdersStore()

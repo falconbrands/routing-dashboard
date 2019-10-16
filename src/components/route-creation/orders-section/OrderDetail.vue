@@ -12,7 +12,7 @@
       <div class="column">
         <div class="description">
           <div class="description-label">Account</div>
-          <div class="description-text">{{ order.Account.DBA__c }}</div>
+          <div class="description-text">{{ displayName }}</div>
         </div>
       </div>
     </div>
@@ -38,6 +38,10 @@ export default class OrderDetail extends Vue {
     }
 
     return this.additionalIds.split(',')
+  }
+
+  get displayName () {
+    return this.order.Account.DBA__c || this.order.Account.Name
   }
 
 }

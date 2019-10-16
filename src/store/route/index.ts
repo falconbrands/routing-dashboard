@@ -203,11 +203,10 @@ export class RouteStore {
     }, [] as UnfinishedRouteStop[])
   }
 
-  // TODO: We match an order by shipping street address here. It's possible that we can match by something more consistent,
-  // like an account id if we make the relationship in SF strict.
   private findIndexWithIdenticalAddress = (order: Order) => {
     return this.state.stops.findIndex((stop) => {
-      return stop.Order__r.ShippingStreet.toLowerCase() === order.ShippingStreet.toLowerCase() && stop.Order__r.ShippingState.toLowerCase() === order.ShippingState.toLowerCase()
+      return stop.Order__r.Account.Name.toLowerCase() === order.Account.Name
+      // return stop.Order__r.ShippingStreet.toLowerCase() === order.ShippingStreet.toLowerCase() && stop.Order__r.ShippingState.toLowerCase() === order.ShippingState.toLowerCase()
     })
   }
 
