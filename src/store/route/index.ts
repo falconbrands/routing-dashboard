@@ -3,6 +3,7 @@ import salesforce, { Order, Route, RouteStop, Geolocation } from '@/services/sal
 import directions from '@/store/directions'
 import orders, { OrdersStore } from '@/store/orders'
 import { DateTime } from 'luxon'
+import { stripHTML } from '@/services/utils'
 
 export type UnfinishedRoute = Partial<Route> & Pick<Route, 'ScheduledStartTime__c'>
 export type UnfinishedRouteStop = Pick<RouteStop, 'Order__c' | 'Order__r' | 'AdditionalOrder1__c' | 'AdditionalOrder1__r' | 'AdditionalOrder2__c' | 'AdditionalOrder2__r'>
@@ -125,6 +126,7 @@ export class RouteStore {
         EstimatedDepartureTime__c: estimatedArrivalTime + estimatedStopDuration,
         LocationCoordinates__Latitude__s: leg.end_location.lat(),
         LocationCoordinates__Longitude__s: leg.end_location.lng(),
+        TurnByTurnDirections__c: this.generateTurnByTurnDirections(leg),
       } as RouteStop)
 
       return stops
@@ -208,6 +210,12 @@ export class RouteStore {
       return stop.Order__r.Account.Name.toLowerCase() === order.Account.Name
       // return stop.Order__r.ShippingStreet.toLowerCase() === order.ShippingStreet.toLowerCase() && stop.Order__r.ShippingState.toLowerCase() === order.ShippingState.toLowerCase()
     })
+  }
+
+  private generateTurnByTurnDirections = (leg: google.maps.DirectionsLeg): string => {
+    return leg.steps.reduce((s, step) => {
+      return s + stripHTML(step.instructions) + '\n'
+    }, '')
   }
 
 }

@@ -38,6 +38,7 @@ export interface RouteStop {
   AdditionalOrder1__r?: Order
   AdditionalOrder2__c?: String
   AdditionalOrder2__r?: Order
+  TurnByTurnDirections?: string
 }
 
 export interface Geolocation {

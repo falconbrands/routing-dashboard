@@ -12,7 +12,7 @@ export class SalesforceTestService {
         ShippingCity: 'Los Angeles',
         ShippingState: 'California',
         Delivery_Zone__c: 'Zone Something',
-        Scheduled_Delivery_Date__c: 23525325242432,
+        Scheduled_Delivery_Date__c: new Date().getTime(),
         Distribution_Center__c: 'xxxxxxx',
         Account: {
           ID: 'sdjfhskjfhsd',
@@ -28,7 +28,7 @@ export class SalesforceTestService {
         ShippingCity: 'Sacramento',
         ShippingState: 'California',
         Delivery_Zone__c: 'Zone Something',
-        Scheduled_Delivery_Date__c: 23525325242432,
+        Scheduled_Delivery_Date__c: new Date().getTime(),
         Distribution_Center__c: 'xxxxxxx',
         Account: {
           ID: 'sdjfhskjfhsd',
@@ -44,7 +44,7 @@ export class SalesforceTestService {
         ShippingCity: 'San Fransisco',
         ShippingState: 'California',
         Delivery_Zone__c: 'Zone Something',
-        Scheduled_Delivery_Date__c: 23525325242432,
+        Scheduled_Delivery_Date__c: new Date().getTime(),
         Distribution_Center__c: 'xxxxxxx',
         Account: {
           ID: 'id',
