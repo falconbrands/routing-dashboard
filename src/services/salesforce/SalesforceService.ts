@@ -41,6 +41,8 @@ export class SalesforceService {
       delete stop.AdditionalOrder2__r
     })
 
+    console.log('-- SALESFORCE: routeStops --', routeStops)
+
     window.rtng_RouteControllerExtension.saveRoute(JSON.stringify(route), JSON.stringify(routeStops), (result: any) => {
       console.log('-- SALESFORCE: saveRoute --', result)
       resolve(result)

@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import salesforce, { Order } from '@/services/salesforce'
-import zones from '@/store/zones'
-import directions from '@/store/directions'
 import { DateTime } from 'luxon'
 import distribution from '../distribution'
 

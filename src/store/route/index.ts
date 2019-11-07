@@ -122,6 +122,8 @@ export class RouteStore {
       stops.push({
         Order__c: stop.Order__c,
         Order__r: stop.Order__r,
+        AdditionalOrder1__c: stop.AdditionalOrder1__c,
+        AdditionalOrder2__c: stop.AdditionalOrder2__c,
         EstimatedArrivalTime__c: estimatedArrivalTime,
         EstimatedDepartureTime__c: estimatedArrivalTime + estimatedStopDuration,
         LocationCoordinates__Latitude__s: leg.end_location.lat(),
@@ -169,7 +171,7 @@ export class RouteStore {
   }
 
   public addOrder = (order: Order) => {
-    const existingIndex = this.findIndexWithIdenticalAddress(order)
+    const existingIndex = this.findIndexWithIdenticalAccount(order)
 
     if (existingIndex === -1) {
       this.createNewStopWithOrder(order)
@@ -205,9 +207,9 @@ export class RouteStore {
     }, [] as UnfinishedRouteStop[])
   }
 
-  private findIndexWithIdenticalAddress = (order: Order) => {
+  private findIndexWithIdenticalAccount = (order: Order) => {
     return this.state.stops.findIndex((stop) => {
-      return stop.Order__r.Account.Name.toLowerCase() === order.Account.Name
+      return stop.Order__r.Account.Name.toLowerCase() === order.Account.Name.toLowerCase()
       // return stop.Order__r.ShippingStreet.toLowerCase() === order.ShippingStreet.toLowerCase() && stop.Order__r.ShippingState.toLowerCase() === order.ShippingState.toLowerCase()
     })
   }
