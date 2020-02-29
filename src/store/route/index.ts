@@ -209,7 +209,7 @@ export class RouteStore {
 
   private findIndexWithIdenticalAccount = (order: Order) => {
     return this.state.stops.findIndex((stop) => {
-      return stop.Order__r.Account.Name.toLowerCase() === order.Account.Name.toLowerCase()
+      return !this.isStopFullOfOrders(stop) && stop.Order__r.Account.Name.toLowerCase() === order.Account.Name.toLowerCase()
       // return stop.Order__r.ShippingStreet.toLowerCase() === order.ShippingStreet.toLowerCase() && stop.Order__r.ShippingState.toLowerCase() === order.ShippingState.toLowerCase()
     })
   }
@@ -218,6 +218,10 @@ export class RouteStore {
     return leg.steps.reduce((s, step) => {
       return s + stripHTML(step.instructions) + '\n'
     }, '')
+  }
+
+  private isStopFullOfOrders = (stop: UnfinishedRouteStop) => {
+    return !!stop.Order__c && !!stop.AdditionalOrder1__c && !!stop.AdditionalOrder2__c
   }
 
 }

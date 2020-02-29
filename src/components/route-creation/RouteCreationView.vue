@@ -6,7 +6,7 @@
     <section class="section">
       <route-section />
     </section>
-    <section class="section">
+    <section class="section map-section">
       <map-section />
     </section>
   </div>
@@ -43,7 +43,11 @@ export default class RouteCreationView extends Vue {
 
 .section {
   position: relative;
-  width: 33.33333%;
+  width: 30%;
+
+  &.map-section {
+    width: 40%;
+  }
 }
 
 </style>
