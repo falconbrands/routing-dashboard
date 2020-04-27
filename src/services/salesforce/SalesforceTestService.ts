@@ -11,7 +11,7 @@ export class SalesforceTestService {
         ShippingStreet: '448 S Hill St.',
         ShippingCity: 'Los Angeles',
         ShippingState: 'California',
-        Delivery_Zone__c: 'Zone Something',
+        DeliveryZone__c: 'Zone Something',
         Scheduled_Delivery_Date__c: new Date().getTime(),
         Distribution_Center__c: 'xxxxxxx',
         Account: {
@@ -27,7 +27,7 @@ export class SalesforceTestService {
         ShippingStreet: '',
         ShippingCity: 'Sacramento',
         ShippingState: 'California',
-        Delivery_Zone__c: 'Zone Something',
+        DeliveryZone__c: 'Zone Something',
         Scheduled_Delivery_Date__c: new Date().getTime(),
         Distribution_Center__c: 'xxxxxxx',
         Account: {
@@ -43,7 +43,7 @@ export class SalesforceTestService {
         ShippingStreet: '',
         ShippingCity: 'San Fransisco',
         ShippingState: 'California',
-        Delivery_Zone__c: 'Zone Something',
+        DeliveryZone__c: 'Zone Something',
         Scheduled_Delivery_Date__c: new Date().getTime(),
         Distribution_Center__c: 'xxxxxxx',
         Account: {

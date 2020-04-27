@@ -5,7 +5,7 @@ export interface Order {
   ShippingStreet: string
   ShippingCity: string
   ShippingState: string
-  Delivery_Zone__c: string
+  DeliveryZone__c: string
   RouteId__c?: string
   Scheduled_Delivery_Date__c: number
   Distribution_Center__c: string

@@ -83,7 +83,7 @@ export class OrdersStore {
       return false
     }
 
-    if (this.state.zoneFilter && this.state.zoneFilter !== this.defaultZoneFilter && order.Delivery_Zone__c !== this.state.zoneFilter) {
+    if (this.state.zoneFilter && this.state.zoneFilter !== this.defaultZoneFilter && order.DeliveryZone__c !== this.state.zoneFilter) {
       return false
     }
 
@@ -96,8 +96,8 @@ export class OrdersStore {
 
   get zones () {
     return this.state.orders.reduce((zones, order) => {
-      if (zones.indexOf(order.Delivery_Zone__c) === -1) {
-        zones.push(order.Delivery_Zone__c)
+      if (zones.indexOf(order.DeliveryZone__c) === -1) {
+        zones.push(order.DeliveryZone__c)
       }
 
       return zones
