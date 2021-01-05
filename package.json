@@ -9,7 +9,7 @@
     "zip": "zip -r RoutingDashboardAssets.resource RoutingDashboardAssets"
   },
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "bulma": "^0.7.5",
     "core-js": "^2.6.5",
     "google-maps": "^3.3.0",
